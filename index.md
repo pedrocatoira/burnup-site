@@ -8,4 +8,3 @@ Burn-up charts for Jira Epics and releases: scope, done, a capacity-based foreca
 
 - [Getting started](getting-started.md)
 - [Privacy policy](privacy-policy.md)
-- [Terms of use](terms.md)

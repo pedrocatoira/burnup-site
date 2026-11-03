@@ -4,7 +4,7 @@ title: Privacy policy · Burn-up for Jira
 
 # Privacy policy
 
-**Burn-up for Jira** · Effective November 2, 2026 · Draft, to be reviewed before publishing
+**Burn-up for Jira** · Effective November 2, 2026
 
 This policy explains what Burn-up for Jira ("the app") reads, stores and shares when it is installed on an Atlassian Jira Cloud site. The app is published by Catoira Consulting Inc ("we").
 
