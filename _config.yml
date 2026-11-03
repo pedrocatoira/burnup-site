@@ -1,0 +1,4 @@
+title: Burn-up for Jira
+description: Burn-up charts and forecasts for Jira Epics and releases.
+# GitHub Pages defaults: Jekyll with jekyll-relative-links, so links to .md pages become .html.
+theme: jekyll-theme-primer
