@@ -66,4 +66,4 @@ Use the **copy** icon at the top right of the chart to copy it as an image (alwa
 | "No issues in this Epic yet" | Add child issues of the counted types, then open the panel again. |
 | A message about too many issues | The Epic or release has more than 20,000 issues of the counted types. Narrow the issue types in settings. |
 
-Questions: [SUPPORT EMAIL] · [Privacy policy](privacy-policy.md) · [Terms of use](terms.md)
+Questions: [support@catoira.app](mailto:support@catoira.app) · [Privacy policy](privacy-policy.md) · [Terms of use](terms.md)

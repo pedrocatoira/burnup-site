@@ -4,9 +4,9 @@ title: Privacy policy · Burn-up for Jira
 
 # Privacy policy
 
-**Burn-up for Jira** · Effective [DATE] · Draft, to be reviewed before publishing
+**Burn-up for Jira** · Effective November 2, 2026 · Draft, to be reviewed before publishing
 
-This policy explains what Burn-up for Jira ("the app") reads, stores and shares when it is installed on an Atlassian Jira Cloud site. The app is published by [PUBLISHER NAME] ("we").
+This policy explains what Burn-up for Jira ("the app") reads, stores and shares when it is installed on an Atlassian Jira Cloud site. The app is published by Catoira Consulting Inc ("we").
 
 ## Summary
 
@@ -53,7 +53,7 @@ We do not sell, rent or share data with anyone. The app uses no third-party serv
 
 - Site and project admins control which issue types and fields the app uses, in the app's settings.
 - Uninstalling the app stops all processing and leads to deletion of its storage, as described above.
-- For questions or requests about data, contact [SUPPORT EMAIL].
+- For questions or requests about data, contact [support@catoira.app](mailto:support@catoira.app).
 
 ## Changes
 

@@ -4,9 +4,9 @@ title: Terms of use · Burn-up for Jira
 
 # Terms of use
 
-**Burn-up for Jira** · Effective [DATE] · Draft, to be reviewed by a lawyer before publishing
+**Burn-up for Jira** · Effective November 2, 2026 · Draft, to be reviewed by a lawyer before publishing
 
-These terms apply to Burn-up for Jira ("the app"), published by [PUBLISHER NAME] ("we") on the Atlassian Marketplace. By installing or using the app, the customer organisation ("you") agrees to these terms.
+These terms apply to Burn-up for Jira ("the app"), published by Catoira Consulting Inc ("we") on the Atlassian Marketplace. By installing or using the app, the customer organisation ("you") agrees to these terms.
 
 ## 1. The Marketplace terms apply
 
@@ -30,7 +30,7 @@ Don't use the app to break the law, break Atlassian's terms, get around licensin
 
 ## 6. Support and changes
 
-Support is offered as described on the Marketplace listing, at [SUPPORT EMAIL]. We may update the app to fix problems, improve it or follow changes to Atlassian's platform. If we remove a significant feature, we will say so on the listing or in release notes.
+Support is offered as described on the Marketplace listing, at [support@catoira.app](mailto:support@catoira.app). We may update the app to fix problems, improve it or follow changes to Atlassian's platform. If we remove a significant feature, we will say so on the listing or in release notes.
 
 ## 7. No warranty
 
@@ -50,4 +50,4 @@ We will post changes here and update the effective date. Continuing to use the a
 
 ## 11. Contact
 
-[PUBLISHER NAME] · [ADDRESS] · [SUPPORT EMAIL]
+Catoira Consulting Inc · 2-2785 West 21st Ave, Vancouver - BC, Canada. V6L 1K4 · [support@catoira.app](mailto:support@catoira.app)
