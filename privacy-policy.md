@@ -35,7 +35,7 @@ Everything below is kept in Forge storage, which Atlassian hosts for the app on 
 | Chart inputs per Epic or release: metric, capacity per week, start date, deadline | Show the same chart to the next person who opens it | Until the app is uninstalled |
 | Former members of an Epic: issue ids, the time each one left, and when the Epic was last checked | Show removed issues in past weeks (Jira can't search parent history) | Until the app is uninstalled |
 | Chart cache: the computed chart (weekly totals, keys of issues completed each week, the Epic or release key and name), stored per viewer under their Atlassian account id | Open charts quickly | 15 minutes, then deleted |
-| Background job records for large charts: status and progress, the requesting viewer's Atlassian account id, the Epic or release id; the job's input (issue ids and chart inputs) | Build large charts and show progress | Inputs deleted when the job ends; records deleted after 1 day |
+| Background job records for large charts: status and progress, the requesting viewer's Atlassian account id, the Epic or release id; the job's input (issue ids and chart inputs) | Build large charts and show progress | Inputs deleted when the job ends; records deleted after 12 hours |
 
 Issue summaries, descriptions, comments, attachments and other issue content are not stored. The cache is per viewer because each chart is read with that viewer's permissions, so it is never shown to anyone else.
 
