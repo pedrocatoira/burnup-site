@@ -46,6 +46,9 @@ lede: What the app reads and stores, where it lives, who can see it, and how lon
 </table>
 <p>There are no write scopes for Jira data.</p>
 
+<h2 id="residency">Data residency</h2>
+<p>The app’s data is kept in Atlassian’s Forge hosted storage, which supports <a href="https://developer.atlassian.com/platform/forge/data-residency/">Atlassian data residency</a>. It stays in the same location as your Jira site, and if the site’s data is moved to another location, the app’s data moves automatically with it.</p>
+
 <h2 id="logs">Logs</h2>
 <p>Atlassian keeps operational logs for Forge apps, which we can read. The app’s production logs contain only ids, counts, durations and error types (for example an HTTP status), never issue content.</p>
 
@@ -53,7 +56,7 @@ lede: What the app reads and stores, where it lives, who can see it, and how lon
 <ul>
   <li>Settings, chart inputs and past-member ids are kept until the app is uninstalled. Charts are cached for 15 minutes, and background job records are deleted after 12 hours.</li>
   <li>If a subscription or trial ends, nothing is deleted; the app asks for an active license until you subscribe again.</li>
-  <li><strong>Uninstalling:</strong> Atlassian deletes the app’s Forge storage under its data retention rules for Forge apps.</li>
+  <li><strong>Uninstalling:</strong> Atlassian soft-deletes the app’s stored data and keeps it for a limited period under its data retention policy, then deletes it. A reinstall is treated as a new installation, but if it is requested within 21 days of uninstalling, the new installation can be relinked to the previous data (see Atlassian’s <a href="https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle/">hosted storage data lifecycle</a>).</li>
 </ul>
 
 <h2 id="practices">Our practices</h2>

@@ -54,7 +54,7 @@
   </tbody>
 </table>
 <p>Apart from the Epic’s or release’s own key and summary, used as the chart title, issue summaries, descriptions, comments, attachments and other issue content are not stored. The cache is per viewer because each chart is read with that viewer’s permissions, so it is never shown to anyone else.</p>
-<p>When the app is uninstalled, Atlassian deletes its Forge storage under Atlassian’s data retention rules for Forge apps.</p>
+<p>When the app is uninstalled, Atlassian soft-deletes its Forge storage, keeps it for a limited period under Atlassian’s data retention policy, and then deletes it. See <a href="security.html#retention">retention and deletion</a>.</p>
 
 <h2 id="logs">Logs</h2>
 <p>Atlassian keeps operational logs for Forge apps that we can read. The app’s production logs contain only ids, counts, durations and error types (for example an HTTP status). They never contain issue content.</p>
@@ -71,7 +71,7 @@
 <h2 id="choices">Your choices</h2>
 <ul>
   <li>Site and project admins control which issue types and fields the app uses, in the app’s settings.</li>
-  <li>Uninstalling the app stops all processing and leads to deletion of its storage, as described above.</li>
+  <li>Uninstalling the app stops all processing and leads to deletion of its storage after Atlassian’s retention period, as described above.</li>
   <li>For questions or requests about data, contact <a href="mailto:support@catoira.app">support@catoira.app</a>.</li>
 </ul>
 
