@@ -1,0 +1,54 @@
+title: Privacy policy
+description: How Catoira Consulting Inc handles personal information for Burn-up for Jira and this website.
+lede: What Burn-up for Jira reads, stores and shares when it is installed on a Jira Cloud site. Effective November 2, 2026.
+
+<div class="callout"><p><strong>In short:</strong> the app runs entirely on Atlassian’s Forge platform. It has no servers of its own and sends no data outside Atlassian. It only reads Jira data, as the person viewing the chart, and never changes it. No third parties, no analytics, no tracking, no advertising.</p></div>
+
+<h2 id="who">Who we are</h2>
+<p>Burn-up for Jira (“the app”) and this website are provided by <strong>Catoira Consulting Inc</strong> (“we”, “us”). Questions about this policy: <a href="mailto:support@catoira.app">support@catoira.app</a>.</p>
+
+<h2 id="reads">What the app reads</h2>
+<p>To draw a chart for an Epic or a release, the app reads from your Jira site, with the permissions of the person viewing it:</p>
+<ul>
+  <li>the Epic or release (key, summary or name) and its issues: ids, keys, created dates, status and status history, and the story points field when story points are used;</li>
+  <li>for issues that used to belong to the Epic or release, the history of their parent or fix version, so removed issues can be shown up to the week they left;</li>
+  <li>site settings needed to draw the chart: statuses, the site time zone, number fields (for the story points picker), issue types, and the viewer’s admin permissions (to decide who can change settings).</li>
+</ul>
+<p>The app requests only the <code>read:jira-work</code> scope for Jira data and has no write access to Jira. Its other permission, <code>storage:app</code>, is for the storage described next.</p>
+
+<h2 id="stores">What the app stores, and for how long</h2>
+<p>Everything below is kept in Forge storage, which Atlassian hosts for the app on its own infrastructure.</p>
+<table>
+  <thead><tr><th scope="col">Data</th><th scope="col">Purpose</th><th scope="col">Kept</th></tr></thead>
+  <tbody>
+    <tr><td>Site settings and project overrides: story points field, issue types counted, how unestimated issues count</td><td>Configure the charts</td><td>Until the app is uninstalled</td></tr>
+    <tr><td>Chart inputs per Epic or release: metric, capacity per week, start date, deadline</td><td>Show the same chart to the next person who opens it</td><td>Until the app is uninstalled</td></tr>
+    <tr><td>Former members of an Epic: issue ids, the time each one left, and when the Epic was last checked</td><td>Show removed issues in past weeks (Jira can’t search parent history)</td><td>Until the app is uninstalled</td></tr>
+    <tr><td>Chart cache: the computed chart (weekly totals, keys of issues completed each week, the Epic or release key and name), stored per viewer under their Atlassian account id</td><td>Open charts quickly</td><td>15 minutes, then deleted</td></tr>
+    <tr><td>Background job records for large charts: status and progress, the requesting viewer’s Atlassian account id, the Epic or release id; the job’s input (issue ids, chart inputs, and the Epic or release key and summary)</td><td>Build large charts and show progress</td><td>Inputs deleted when the job ends; records deleted after 12 hours</td></tr>
+  </tbody>
+</table>
+<p>Apart from the Epic’s or release’s own key and summary, used as the chart title, issue summaries, descriptions, comments, attachments and other issue content are not stored. The cache is per viewer because each chart is read with that viewer’s permissions, so it is never shown to anyone else.</p>
+<p>When the app is uninstalled, Atlassian deletes its Forge storage under Atlassian’s data retention rules for Forge apps.</p>
+
+<h2 id="logs">Logs</h2>
+<p>Atlassian keeps operational logs for Forge apps that we can read. The app’s production logs contain only ids, counts, durations and error types (for example an HTTP status). They never contain issue content.</p>
+
+<h2 id="support">Support emails</h2>
+<p>If you write to <a href="mailto:support@catoira.app">support@catoira.app</a>, we use your email address and what you tell us only to answer you.</p>
+
+<h2 id="website">This website</h2>
+<p>This website is a static site hosted on GitHub Pages. It sets no cookies and uses no analytics or advertising, and its font is served from the site itself. GitHub, as host, may log visits under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">its own privacy statement</a>.</p>
+
+<h2 id="sharing">Sharing</h2>
+<p>We do not sell, rent or share data with anyone. The app uses no third-party services, analytics, tracking, advertising or cookies of its own. Data is only processed by Atlassian, as the platform the app runs on, under <a href="https://www.atlassian.com/legal/privacy-policy">Atlassian’s privacy policy</a>.</p>
+
+<h2 id="choices">Your choices</h2>
+<ul>
+  <li>Site and project admins control which issue types and fields the app uses, in the app’s settings.</li>
+  <li>Uninstalling the app stops all processing and leads to deletion of its storage, as described above.</li>
+  <li>For questions or requests about data, contact <a href="mailto:support@catoira.app">support@catoira.app</a>.</li>
+</ul>
+
+<h2 id="changes">Changes</h2>
+<p>We will post changes to this policy on this page and update the effective date. See also our <a href="security.html">security and data handling</a> page and our <a href="terms.html">end user agreement</a>.</p>

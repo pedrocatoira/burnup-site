@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security and data handling | Burn-up for Jira</title>
+<meta name="description" content="What Burn-up for Jira reads and stores, where it lives, who can see it, and how to report a security issue.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/icon.png" alt="" width="36" height="36">Burn-up for Jira</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="docs.html">Docs</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="security.html" aria-current="page">Security</a>
+      <a href="support.html">Support</a>
+      <!-- MARKETPLACE_URL: replace with the listing URL once it exists -->
+      <a class="btn btn-blue" href="https://marketplace.atlassian.com/search?query=Burn-up%20for%20Jira">Get it on the Marketplace</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <div class="page-head"><div class="wrap"><h1>Security and data handling</h1><p>What the app reads and stores, where it lives, who can see it, and how long it is kept. Last updated November 2026.</p></div></div>
+  <div class="prose"><div class="wrap"><article>
+<h2 id="architecture">How the app runs</h2>
+<p>Burn-up for Jira is built on <strong>Atlassian Forge</strong>. Its code and data are hosted by Atlassian, inside Atlassian’s cloud. Catoira Consulting Inc runs no servers for the app, and the app makes no calls to anything outside Atlassian: no external services, analytics or trackers. It is a Forge-only app, with no Connect modules.</p>
+
+<h2 id="reads">What the app reads</h2>
+<p>To draw a chart for an Epic or a release, the app reads from your Jira site, with the permissions of the person viewing it:</p>
+<ul>
+  <li>the Epic or release (key, and summary or name) and its issues: keys, created dates, status and status history, and the story points field when story points are used;</li>
+  <li>for issues that used to belong to the Epic or release, the history of their parent or fix version, so removed issues show up to the week they left;</li>
+  <li>site settings needed to draw the chart: statuses, the site time zone, number fields (for the story points picker), issue types, and whether the viewer is an admin.</li>
+</ul>
+
+<h2 id="stored">What the app stores</h2>
+<p>The app keeps the following in Atlassian’s Forge hosted storage for your site:</p>
+<table>
+  <thead><tr><th scope="col">Data</th><th scope="col">What it contains</th><th scope="col">Kept</th></tr></thead>
+  <tbody>
+    <tr><td>Settings</td><td>Site settings and project overrides: story points field, issue types counted, how unestimated issues count</td><td>Until the app is uninstalled</td></tr>
+    <tr><td>Chart inputs</td><td>For each Epic or release: metric, capacity per week, start date, deadline</td><td>Until the app is uninstalled</td></tr>
+    <tr><td>Past members</td><td>For each Epic: ids of issues that used to belong to it, the time each one left, and when the Epic was last checked</td><td>Until the app is uninstalled</td></tr>
+    <tr><td>Chart cache</td><td>The computed chart (weekly totals, keys of issues completed each week, the Epic or release key and name), per viewer under their Atlassian account id</td><td>15 minutes, then deleted</td></tr>
+    <tr><td>Background jobs</td><td>For large charts: status and progress, the requesting viewer’s account id, the Epic or release id, and the job’s input, which is removed when the job ends</td><td>Records deleted after 12 hours</td></tr>
+  </tbody>
+</table>
+<p>The app <strong>does not store</strong> issue summaries, descriptions, comments, attachments or other issue fields, nor people’s names, email addresses or avatars, nor any password or token. The one exception is the key and summary (or name) of the Epic or release itself, which is the chart’s title.</p>
+
+<h2 id="access">Who can see what</h2>
+<ul>
+  <li>The app is <strong>read-only</strong>. It never creates, changes or deletes anything in Jira.</li>
+  <li>Charts are read <strong>as the signed-in person</strong>, so Jira’s own permissions decide what each person sees. The chart cache is per viewer and is never shown to anyone else.</li>
+  <li>Large charts are built in the background as the app, but only from issue ids the requesting viewer’s own search found. Findings from the scan for removed issues are re-checked as the viewer before they are used, and the scan’s progress reaches the panel as a percentage only.</li>
+  <li>Changing settings is limited to Jira admins (site) and project admins (project overrides).</li>
+  <li>Catoira Consulting Inc has no access to your Jira site or to the app’s stored data.</li>
+</ul>
+
+<h2 id="permissions">Permissions the app requests</h2>
+<table>
+  <thead><tr><th scope="col">Permission</th><th scope="col">Why</th></tr></thead>
+  <tbody>
+    <tr><td><code>read:jira-work</code></td><td>Read issues, changelogs, fields, versions and permissions to draw the chart</td></tr>
+    <tr><td><code>storage:app</code></td><td>Keep settings, chart inputs and short-lived caches in Forge hosted storage</td></tr>
+  </tbody>
+</table>
+<p>There are no write scopes for Jira data.</p>
+
+<h2 id="logs">Logs</h2>
+<p>Atlassian keeps operational logs for Forge apps, which we can read. The app’s production logs contain only ids, counts, durations and error types (for example an HTTP status), never issue content.</p>
+
+<h2 id="retention">Retention and deletion</h2>
+<ul>
+  <li>Settings, chart inputs and past-member ids are kept until the app is uninstalled. Charts are cached for 15 minutes, and background job records are deleted after 12 hours.</li>
+  <li>If a subscription or trial ends, nothing is deleted; the app asks for an active license until you subscribe again.</li>
+  <li><strong>Uninstalling:</strong> Atlassian deletes the app’s Forge storage under its data retention rules for Forge apps.</li>
+</ul>
+
+<h2 id="practices">Our practices</h2>
+<ul>
+  <li>The calculation engine is separate from Jira and Forge code and is covered by automated tests, including reopened issues, Won’t Do and Duplicate resolutions, and unestimated issues.</li>
+  <li>Dependencies are installed from a lockfile.</li>
+  <li>The app follows the principle of least privilege: it requests only the permissions listed above.</li>
+</ul>
+
+<h2 id="report">Report a security issue</h2>
+<p>Email <a href="mailto:support@catoira.app?subject=Security%20report">support@catoira.app</a> with “Security report” in the subject. Include the steps to reproduce, the impact you see, and how to reach you. We acknowledge reports within three business days and keep you updated until the issue is fixed. Please give us a reasonable time to fix an issue before disclosing it publicly, and don’t access or change data that isn’t yours while testing.</p>
+  </article></div></div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <p>© 2026 Catoira Consulting Inc.</p>
+      <p>Jira and Atlassian are trademarks of Atlassian Pty Ltd. Burn-up for Jira is not made or endorsed by Atlassian.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="docs.html">Docs</a>
+      <a href="support.html">Support</a>
+      <a href="security.html">Security</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

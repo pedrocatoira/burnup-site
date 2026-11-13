@@ -1,0 +1,81 @@
+title: Docs
+description: How to install Burn-up for Jira, chart an Epic or release, read the chart, and manage settings.
+lede: Everything you need to chart an Epic or release, from installing the app to reading the forecast.
+
+<ul class="toc" aria-label="On this page">
+  <li><a href="#install">Install and find Burn-up</a></li>
+  <li><a href="#setup">Set up story points</a></li>
+  <li><a href="#epic">Chart an Epic</a></li>
+  <li><a href="#release">Chart a release</a></li>
+  <li><a href="#read">Read the chart</a></li>
+  <li><a href="#share">Share it</a></li>
+  <li><a href="#good-to-know">Good to know</a></li>
+  <li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+
+<p>Burn-up for Jira draws a burn-up chart for any Epic or release: <strong>scope</strong> (red), <strong>done</strong> (green), a <strong>forecast</strong> at your planned weekly capacity (blue dashed) with a predicted end date, and an <strong>ideal line</strong> to your deadline (grey long-dashed). It works for Scrum and Kanban, because capacity is always per week.</p>
+
+<h2 id="install">Install and find Burn-up</h2>
+<p>A Jira site admin installs Burn-up for Jira from the Atlassian Marketplace. The app works with Jira Cloud only. It is free for up to 10 users and has a 30-day trial above that.</p>
+<p>The app only reads Jira data, with the viewer’s permissions, and never changes anything.</p>
+
+<h2 id="setup">Set up story points</h2>
+<p>Throughput charts (issue counts) work straight away. For story point charts, a Jira admin picks the field once:</p>
+<ol>
+  <li>Go to <strong>Jira settings → Apps → Burn-up</strong>.</li>
+  <li><strong>Story points field</strong>: choose your field. The app suggests “Story Points” or “Story point estimate” when it finds them.</li>
+  <li><strong>Issue types counted</strong>: by default all standard types; sub-tasks are excluded so work isn’t counted twice.</li>
+  <li><strong>Unestimated issues</strong>: count them as 0 (default) or use a default estimate. Charts always show how many are unestimated.</li>
+</ol>
+<p>Project admins can override the field and issue types for one project in <strong>Project settings → Apps → Burn-up</strong>. Settings are read-only for everyone else.</p>
+
+<h2 id="epic">Chart an Epic</h2>
+<ol>
+  <li>Open an Epic and open the <strong>Burn-up</strong> panel on the issue view.</li>
+  <li>Fill in:
+    <ul>
+      <li><strong>Based on</strong>: Throughput or Story points.</li>
+      <li><strong>Capacity per week</strong>: how much the team plans to finish each week (decimals allowed). After the first chart, hints show the <strong>observed</strong> average of the last 6 weeks and, with a deadline, the capacity <strong>to hit the deadline</strong>. Click <strong>Use</strong> to copy one in.</li>
+      <li><strong>Start date</strong> and <strong>Deadline</strong> (optional).</li>
+    </ul>
+  </li>
+  <li>Click <strong>Create Burn-up</strong>.</li>
+</ol>
+<p>The inputs are saved for the Epic, so the next person who opens it sees the same chart. Change any input and click <strong>Update Burn-up</strong> to redraw. Switching the metric clears the capacity field, because 5 issues a week and 5 points a week mean different things.</p>
+
+<h2 id="release">Chart a release</h2>
+<p>Open the project and choose <strong>Burn-up</strong> in the project sidebar, then pick a release. The rest works as for Epics.</p>
+
+<h2 id="read">Read the chart</h2>
+<ul>
+  <li><strong>Scope</strong> counts every issue from the day it was created, even if it joined the Epic later. Issues moved out of the Epic or release count until the week they left. Won’t Do and Duplicate stay in scope and count as done.</li>
+  <li><strong>Done</strong> is the state at the end of each week (Sunday 23:59, site time zone), so reopened issues drop out and come back when done again. Work finished before the start date still shows in the week it was finished.</li>
+  <li><strong>Forecast</strong> starts today (or at a future start date) and climbs by your capacity each week until it reaches today’s scope. It assumes scope stays flat. The predicted end is the week of the Monday where it arrives.</li>
+  <li><strong>Ideal line</strong> runs from the start to your deadline at today’s scope. It appears only when you set a deadline.</li>
+  <li>The <strong>info box</strong> compares planned, observed and to-hit-deadline capacity, and shows whether you are <strong>on track</strong> or <strong>late by N weeks</strong>.</li>
+  <li>Hover a done point to see which issues were completed that week.</li>
+</ul>
+<p>Each week is labelled by its Monday. The chart starts at the earliest of the first issue started or finished and your start date; with neither, it starts at the current week.</p>
+
+<h2 id="share">Share it</h2>
+<p>Use the <strong>copy</strong> icon at the top right of the chart to copy it as an image (always on a light background), or <strong>Download PNG</strong>.</p>
+
+<h2 id="good-to-know">Good to know</h2>
+<ul>
+  <li><strong>Fresh data:</strong> charts are cached for 15 minutes for each viewer. Click <strong>Refresh data</strong> to read Jira again now.</li>
+  <li><strong>Large Epics and releases:</strong> above 2,000 issues the chart is built in the background, with a progress bar. You can close the page; the chart is ready when you come back. The limit is 20,000 issues.</li>
+  <li><strong>Removed issues:</strong> the first time an Epic is charted, the app checks the project for issues that used to belong to it. The chart shows straight away and updates when the check finishes.</li>
+  <li><strong>Permissions:</strong> everyone sees the chart with their own Jira permissions, so people who can’t see some issues get a chart without them.</li>
+</ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+  <thead><tr><th scope="col">You see</th><th scope="col">What to do</th></tr></thead>
+  <tbody>
+    <tr><td>“Burn-up needs an active license”</td><td>A Jira admin can subscribe or renew in <strong>Manage apps</strong> (the message links there for admins).</td></tr>
+    <tr><td>Story points is greyed out</td><td>No story points field is set: see <a href="#setup">Set up story points</a>.</td></tr>
+    <tr><td>“No issues in this Epic yet”</td><td>Add child issues of the counted types, then open the panel again.</td></tr>
+    <tr><td>A message about too many issues</td><td>The Epic or release has more than 20,000 issues of the counted types. Narrow the issue types in settings.</td></tr>
+  </tbody>
+</table>
+<p>Still stuck? Write to <a href="mailto:support@catoira.app">support@catoira.app</a>. See <a href="support.html">Support</a>.</p>
